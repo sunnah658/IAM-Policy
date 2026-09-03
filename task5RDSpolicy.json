@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "allowviewpermissionforRDS",
+            "Effect": "Allow",
+            "Action": [
+                "rds:Describe*",
+                "rds:ListTagsForResource"
+            ],
+            "Resource": "arn:aws:rds:*:*:db:*"
+        },
+        {
+            "Sid": "allowpermissionforRDS(dev)",
+            "Effect": "Allow",
+            "Action": [
+                "rds:StartDBInstance",
+                "rds:StopDBInstance",
+                "rds:RebootDBInstance",
+                "rds:DescribeDBInstances",
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBSnapshots",
+                "rds:ListTagsForResource"
+            ],
+            "Resource": 
+                "arn:aws:rds:*:*:db:*",
+                "Condition": {
+                    "StringEquals": {
+                        "rds:db-tag/Environment": "dev"
+                    }
+                }
+        }
+    ]
+}
