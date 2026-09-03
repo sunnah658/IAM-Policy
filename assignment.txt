@@ -1,0 +1,51 @@
+AWS IAM Policy – Critical Class Tasks
+1. EC2 Start/Stop/Reboot
+* Allow Start, Stop, Reboot
+* Deny Terminate
+2. EC2 Tag-Based Access
+* Allow actions only on instances tagged Environment=Dev
+* No access to Production instances
+3. S3 Folder-Level Access
+* Allow Upload/Download only under class/*
+* Deny access to other folders
+4. S3 Protected File
+* Allow Read/Upload for class/test.txt
+* Explicitly Deny Delete
+> 5. RDS Dev Access optional
+* Allow Start/Stop/Reboot for Dev RDS
+* Production RDS → Read-only
+6. RDS Delete Protection
+* Allow normal RDS operations
+* Explicitly Deny RDS deletion
+7. S3 Public vs Private
+* Allow public Read
+* Deny public Upload
+* Allow Upload for a specific IAM user
+8. IAM Self-Service
+* Allow users to change their own password
+* Deny modifying/deleting other IAM users
+> 9. CloudWatch Read-Only optional
+* Allow viewing logs and metrics
+* Deny deleting log groups
+10. Cross-Account S3 Access
+* Account A user accesses Account B's S3 bucket
+* Allow access only to a specific folder
+11. MFA-Based Access
+* Allow EC2 Start/Stop only when MFA is enabled
+* Deny when MFA is not present
+12. IP-Based Restriction
+* Allow S3 access only from a corporate IP range
+* Deny access from other IPs
+13. Least Privilege Challenge
+* EC2 + S3 + RDS access
+* No Delete/Terminate permissions
+14. Policy Conflict Challenge 
+Policy 1 → Allow Delete
+Policy 2 → Deny Delete
+Explain the final permission result
+15. Final Real-World Challenge 
+* EC2 → Dev instances only
+* S3 → class/* only
+> RDS → Dev resources only optional
+* Delete/Terminate → Explicit Deny
+* MFA required
