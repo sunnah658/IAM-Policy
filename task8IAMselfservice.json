@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+        "Sid": "allowreadpasswordpolicy",
+        "Effect": "Allow",
+        "Action": [
+            "iam:GetAccountPasswordPolicy"
+        ],
+        "Resource": "*"
+        },
+        {
+            "Sid": "allowchangeownpassword",
+            "Effect": "Allow",
+            "Action": [
+                "iam:changePassword"
+            ],
+            "Resource": "arn:aws:iam::123456789012:user/${aws:username}"
+        },
+        {
+            "Sid": "denymodifydeleteotherusers",
+            "Effect": "Deny",
+            "Action": [
+                "iam:DeleteUser",
+                "iam:UpdateUser"
+            ],
+            "NotResource": "arn:aws:iam::123456789012:user/${aws:username}"
+        }
+    ]
+}
