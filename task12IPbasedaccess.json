@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "allowS3accessbasedonIP",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": "192.0.2.0/24"
+                }
+            }
+        },
+        {
+            "Sid": "denyS3accessbasedonIP",
+            "Effect": "Deny",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": "192.0.2.0/24"
+                }
+            }
+        }
+    ]
+}
