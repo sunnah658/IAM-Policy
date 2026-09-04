@@ -1,0 +1,55 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "allowpermissionsforEC2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "allowpermissionsforS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "allowpermissionsforRDS",
+            "Effect": "Allow",
+            "Action": [
+                "rds:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "denypermissionsforEC2",
+            "Effect": "Deny",
+            "Action": [
+                "ec2:TerminateInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "denypermissionforS3",
+            "Effect": "Deny",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource":"*"
+        },
+        {
+            "Sid": "denypermissionforRDS",
+            "Effect": "Deny",
+            "Action":[
+                "rds:DeleteDBInstance",
+                "rds:DeleteDBCluster"
+            ],
+            "Resource":"*"
+        }
+    ]
+}
