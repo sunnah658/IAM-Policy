@@ -1,0 +1,14 @@
+Task -> 
+Policy Conflict Challenge 
+Policy 1 → Allow Delete
+Policy 2 → Deny Delete
+Explain the final permission result
+
+
+Explanation -> 
+The final permission will be "Deny Delete". 
+Because AWS the absolute highest priority in policy is always "Explicit Deny always overrides allow".
+AWS policy evaluates secquance:
+-> Implicit Deny. If there is no policy specifically allowing the action, it is blocked. 
+-> Evaluate Allows. If there is an explicit Allow, it tentatively permits the action.
+-> Check for Explicit Denys. It scans all attached policies for a Deny. If it finds even one, it permanently overrides the Allow and the request fails.
